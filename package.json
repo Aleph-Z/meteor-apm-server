@@ -6,6 +6,9 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "meteor run",
+    "buildx": "meteor build ../dist --directory",
+    "build": "meteor build ../dist",
     "mup-deploy": "npx mup setup && npx mup deploy",
     "mup-logs": "npx mup logs",
     "mup-restart": "npx mup restart"
