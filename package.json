@@ -7,8 +7,8 @@
   },
   "scripts": {
     "start": "meteor run",
-    "buildx": "meteor build ../dist --directory",
-    "build": "meteor build ../dist",
+    "buildx": "meteor build ../dist --architecture os.linux.x86_64 --directory",
+    "build": "meteor build ../dist --architecture os.linux.x86_64",
     "mup-deploy": "npx mup setup && npx mup deploy",
     "mup-logs": "npx mup logs",
     "mup-restart": "npx mup restart"
@@ -28,7 +28,7 @@
     "async": "^2.6.1",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
-    "bcrypt": "^3.0.1",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "color-hash": "^1.0.3",
