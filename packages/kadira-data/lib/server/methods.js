@@ -33,7 +33,17 @@ Meteor.methods({
     var pipes = definition.pipeHandler(newArgs);
     const db = MongoInternals.defaultRemoteCollectionDriver().mongo.db;
     var coll = db.collection(definition.collection);
-    var data = Meteor.wrapAsync(coll.aggregate, coll)(pipes);
+    var data = Meteor.wrapAsync(function(callback) {
+      coll
+        .aggregate(pipes)
+        .toArray()
+        .then(function(data) {
+          callback(null, data);
+        })
+        .catch(function(error) {
+          callback(error);
+        });
+    }, coll)();
 
     definition.filters.forEach(function(filter) {
       data = filter(_.clone(data));
